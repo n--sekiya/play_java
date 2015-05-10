@@ -1,6 +1,7 @@
 @(user:  Form[models.entity.User])
+@import play.i18n._
 
-@main("アカウント登録") {
+@main(Messages.get("common.title.signup")) {
   @* メッセージ表示 *@
   @tag.message()
   @helper.form(action = routes.Signup.confirm) {
