@@ -7,3 +7,23 @@ GET     /                           controllers.Application.index()
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
+
+# ログイン
+#GET /login
+
+# ログアウト
+#GET /logout
+
+# 完了画面
+#GET  /complet                                controllers.Complet.complet()
+
+# アカウント登録
+GET  /signup                                 controllers.Signup.edit()
+POST /signup                                 controllers.Signup.confirm()
+
+# アカウント編集
+# パスワード変更
+# メールアドレス変更
+
+#POST /signup/:id                                 controllers.Signup.confirm(id: Long)
+#POST /signup/:id/                                controllers.Signup.confirm(id: Long)
