@@ -2,8 +2,8 @@
 @import play.i18n._
 
 @main(Messages.get("common.title.signup")) {
-  @* メッセージ表示 *@
-  @tag.message()
+  @* ヘッダー *@
+  @layout.header()
   @helper.form(action = routes.Signup.confirm) {
     @* 姓 *@
     @helper.inputText(field=user("lastNameJa"))
@@ -23,6 +23,6 @@
     <input type="text" id="email" name="email"><br />
     <input type="submit">
   </form>
+  @* フッター *@
+  @layout.footer()
 }
-
-
