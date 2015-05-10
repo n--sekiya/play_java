@@ -1,11 +1,8 @@
 @(message: String)
+@import play.i18n._
 
-<a href="/signup">アカウント登録</a><br>
+<a href="/signup">Messages.get("common.title.signup")</a><br>
 
 <!--
-@main("Welcome to Play") {
-
-    @play20.welcome(message, style = "Java")
-
-}
+@main("Welcome to Play") { @play20.welcome(message, style = "Java")}
 -->

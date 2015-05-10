@@ -1,0 +1,7 @@
+@()
+@if(flash.containsKey("success")) {
+  @flash.get("success")
+}
+@if(flash.containsKey("error")) {
+  @flash.get("error")
+}
