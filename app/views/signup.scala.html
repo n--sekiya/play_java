@@ -1,18 +1,81 @@
-@(user:  Form[models.entity.User])
+@(userForm:  Form[models.entity.User])
 @import play.i18n._
+@import helper._
 
-@main(Messages.get("common.title.signup")) {
+@main(Messages.get("common.signup.title")) {
   @* ヘッダー *@
-  @layout.header()
-  @helper.form(action = routes.Signup.confirm) {
+  @tag.header()
+  @form(action = routes.Signup.confirm) {
+
     @* 姓 *@
-    @helper.inputText(field=user("lastNameJa"))
+    @inputText(
+        field=userForm("lastNameJa"),
+        '_label -> Messages.get("common.label.last_name")
+    )
     @* 名 *@
-    @helper.inputText(field=user("firstNameJa"))
+    @inputText(
+        field=userForm("firstNameJa"),
+        '_label -> Messages.get("common.label.first_name")
+    )
     @* 所属機関 *@
-    @helper.inputText(field=user("affiliationJa"))
+    @inputText(
+        field=userForm("affiliationJa"),
+        '_label -> Messages.get("common.label.affiliation")
+    )
+    @* 性別 *@
+    @inputRadioGroup(
+        field=userForm("gender"),
+        options = Seq(
+            "1" ->Messages.get("common.label.gender.man"),
+            "2"->Messages.get("common.label.gender.woman")
+        ),
+        '_label -> Messages.get("common.label.gender")
+    )
+    @* 誕生日 *@
+    @inputDate(
+        field=userForm("birthday"),
+        '_label -> Messages.get("common.label.birthday")
+    )
+    @* 国 *@
+    @select(
+        field = userForm("country"),
+        options = Seq(
+            "" -> "",
+            "jp" -> "日本",
+            "us" -> "北アメリカ",
+            "vi" -> "中央アメリカ",
+            "cn" -> "東アジア"
+        ),
+        '_label -> Messages.get("common.label.country")
+    )
+
+    @* 備考欄 *@
+    @textarea(
+        field = userForm("remarks"),
+        args = 'cols ->30,'rows -> 3,
+        '_label -> Messages.get("common.label.remarks")
+    )
+    @* パスワード *@
+    @inputPassword(
+        field=userForm("password"),
+        '_label -> Messages.get("common.label.password")
+    )
     @* メールアドレス *@
-    @helper.inputText(field=user("email"))
+    @inputText(
+        userForm("email"),
+        '_label -> Messages.get("common.label.email"),
+        '_help -> Messages.get("common.validation.error.email")
+    )
+
+    @* 利用規約 *@
+    @helper.checkbox(
+        field = userForm("agreement"),
+        '_text -> Messages.get("common.label.agreement.text"),
+        '_label -> Messages.get("common.label.agreement")
+    )
+    @Messages.get("common.label.agreement.comment")<br>
+
+    @* 送信ボタン *@
     <input type="submit">
   }
 
@@ -24,5 +87,5 @@
     <input type="submit">
   </form>
   @* フッター *@
-  @layout.footer()
+  @tag.footer()
 }
