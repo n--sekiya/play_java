@@ -1,11 +1,7 @@
-@(message: String)
+@()
+@import play.i18n._
 
-<a href="/signup">アカウント登録</a><br>
-
-<!--
-@main("Welcome to Play") {
-
-    @play20.welcome(message, style = "Java")
-
-}
--->
+<a href="/calendar/master/user">Messages.get("common.title.calendar.master.user")</a><br>
+<a href="/calendar/master/stamp">Messages.get("common.title.calendar.master.stamp")</a><br>
+<a href="/calendar/month">Messages.get("common.title.calendar.month")</a><br>
+<a href="/calendar/week">Messages.get("common.title.calendar.week")</a><br>

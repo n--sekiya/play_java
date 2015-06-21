@@ -5,25 +5,35 @@
 # Home page
 GET     /                           controllers.Application.index()
 
+# ユーザ一覧
+GET     /calendar/master/user       controllers.UserList.index()
+
+# ユーザ追加
+#GET     /calendar/master/user/add
+
+# ユーザ編集
+#GET     /calendar/master/user/edit/:ユーザID
+
+# スタンプマスタ一覧
+GET     /calendar/master/stamp       controllers.StampList.index()
+
+# スタンプ追加
+#GET     /calendar/master/stamp/add
+
+# スタンプ編集
+#GET     /calendar/master/stamp/edit/:スタンプID
+
+# 月間カレンダー
+#GET     /calendar/month
+#GET     /calendar/month/:ユーザID
+
+# 週間カレンダー
+#GET     /calendar/week
+#GET     /calendar/week/:ユーザID
+
+# スタンプ押す
+#GET     /calendar/stamp/:ユーザID
+
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
 
-# ログイン
-#GET /login
-
-# ログアウト
-#GET /logout
-
-# 完了画面
-#GET  /complet                                controllers.Complet.complet()
-
-# アカウント登録
-GET  /signup                                 controllers.Signup.edit()
-POST /signup                                 controllers.Signup.confirm()
-
-# アカウント編集
-# パスワード変更
-# メールアドレス変更
-
-#POST /signup/:id                                 controllers.Signup.confirm(id: Long)
-#POST /signup/:id/                                controllers.Signup.confirm(id: Long)
