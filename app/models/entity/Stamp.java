@@ -8,7 +8,6 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-import play.data.validation.Constraints.Email;
 import play.data.validation.Constraints.Required;
 import play.db.ebean.Model;
 
@@ -16,39 +15,26 @@ import com.avaje.ebean.annotation.CreatedTimestamp;
 import com.avaje.ebean.annotation.UpdatedTimestamp;
 
 /**
- * ユーザ情報テーブル
+ * スタンプマスタテーブル
  */
 @Entity
-@Table(name = "users")
-public class User extends Model {
+@Table(name = "stamp")
+public class Stamp extends Model {
 
 	/** ID **/
 	@Id
 	public int id;
 
-	/** 姓 **/
+	/** 名前 **/
 	@Required
 	@NotNull
 	@Size(max = 32)
-	public String lastNameJa;
+	public String name;
 
-	/** 名 **/
+	/** 画像パス **/
 	@Required
 	@NotNull
-	@Size(max = 32)
-	public String firstNameJa;
-
-	/** ログインID **/
-	@Required
-	@NotNull
-	@Size(max = 32)
-	public String loginId;
-
-	/** メールアドレス **/
-	@Required
-	@NotNull
-	@Email
-	public String email;
+	public String imgPath;
 
 	/** 論理削除フラグ **/
 	@NotNull

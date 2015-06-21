@@ -6,9 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
-import play.data.validation.Constraints.Email;
 import play.data.validation.Constraints.Required;
 import play.db.ebean.Model;
 
@@ -16,43 +14,28 @@ import com.avaje.ebean.annotation.CreatedTimestamp;
 import com.avaje.ebean.annotation.UpdatedTimestamp;
 
 /**
- * ユーザ情報テーブル
+ * カレンダー情報テーブル
  */
 @Entity
-@Table(name = "users")
-public class User extends Model {
+@Table(name = "calendar")
+public class Calendar extends Model {
 
 	/** ID **/
 	@Id
 	public int id;
 
-	/** 姓 **/
+	/** 日付 **/
+	public Date date;
+
+	/** ユーザID **/
 	@Required
 	@NotNull
-	@Size(max = 32)
-	public String lastNameJa;
+	public User userId;
 
-	/** 名 **/
+	/** スタンプID **/
 	@Required
 	@NotNull
-	@Size(max = 32)
-	public String firstNameJa;
-
-	/** ログインID **/
-	@Required
-	@NotNull
-	@Size(max = 32)
-	public String loginId;
-
-	/** メールアドレス **/
-	@Required
-	@NotNull
-	@Email
-	public String email;
-
-	/** 論理削除フラグ **/
-	@NotNull
-	public boolean deleteFlg;
+	public Stamp stampId;
 
 	/** 作成日時 **/
 	@CreatedTimestamp
