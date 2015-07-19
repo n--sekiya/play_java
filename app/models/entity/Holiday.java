@@ -25,6 +25,9 @@ public class Holiday extends Model {
 	@Id
 	public int id;
 
+	/** 日付 **/
+	public Date date;
+
 	/** 名前 **/
 	@Required
 	@NotNull

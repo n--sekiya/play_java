@@ -25,6 +25,10 @@ public class Stamp extends Model {
 	@Id
 	public int id;
 
+  /** ソート順 **/
+	@NotNull
+	public int sort;
+
 	/** 名前 **/
 	@Required
 	@NotNull

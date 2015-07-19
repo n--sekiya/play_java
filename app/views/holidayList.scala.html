@@ -1,0 +1,24 @@
+@(holidayList: List[models.entity.Holiday])
+@import play.i18n._
+@import helper._
+
+@main(Messages.get("common.title.calendar.master.holiday")) {
+  @* ヘッダー *@
+  @tag.header()
+
+  @* メッセージ表示 *@
+  @tag.message()
+
+  @* 祝日一覧 *@
+  @for(holiday <-holidayList) {
+    @* ID *@
+    @holiday.id
+    @* 日付 *@
+    @holiday.date
+    @* 名前 *@
+    @holiday.name
+  }
+
+  @* フッター *@
+  @tag.footer()
+}

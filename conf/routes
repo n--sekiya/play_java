@@ -2,7 +2,7 @@
 # This file defines all application routes (Higher priority routes first)
 # ~~~~
 
-# Home page
+# リンク一覧
 GET     /                           controllers.Application.index()
 
 # ユーザ一覧
@@ -23,6 +23,15 @@ GET     /calendar/master/stamp       controllers.StampList.index()
 # スタンプ編集
 #GET     /calendar/master/stamp/edit/:スタンプID
 
+# 祝日マスタ一覧
+GET     /calendar/master/holiday       controllers.HolidayList.index()
+
+# 祝日登録
+
+
+# 祝日編集
+
+
 # 月間カレンダー
 #GET     /calendar/month
 #GET     /calendar/month/:ユーザID
@@ -36,4 +45,3 @@ GET     /calendar/master/stamp       controllers.StampList.index()
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
-
