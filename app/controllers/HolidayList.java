@@ -24,8 +24,9 @@ public class HolidayList extends ControllerBase {
 	public static Result index() {
 //		Logger.info("初期表示");
 //		Form<Holiday> stamp = new Form(Holiday.class);
+//		List<Holiday> list = Holiday.find.select("name").all();
 		List<Holiday> list = Holiday.find.all();
-		return ok(stampList.render(list));
+		return ok(holidayList.render(list));
 	}
 
 

@@ -46,4 +46,7 @@ public class Holiday extends Model {
 	@UpdatedTimestamp
 	public Date updateAt;
 
+
+	public static Finder<Long, Holiday> find = new Finder<Long, Holiday>(Long.class, Holiday.class);
+
 }
