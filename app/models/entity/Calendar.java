@@ -12,6 +12,16 @@ import play.db.ebean.Model;
 
 import com.avaje.ebean.annotation.CreatedTimestamp;
 import com.avaje.ebean.annotation.UpdatedTimestamp;
+import java.util.List;
+
+import javax.persistence.*;
+import javax.validation.constraints.Size;
+
+import com.avaje.ebean.annotation.*;
+import play.data.validation.Constraints.Email;
+import play.db.ebean.*;
+import play.db.ebean.Model.Finder;
+
 
 /**
  * カレンダー情報テーブル
@@ -22,7 +32,7 @@ public class Calendar extends Model {
 
 	/** ID **/
 	@Id
-	public int id;
+	public Long id;
 
 	/** 日付 **/
 	public Date date;
@@ -30,12 +40,13 @@ public class Calendar extends Model {
 	/** ユーザID **/
 	@Required
 	@NotNull
-	public User userId;
+	@ManyToOne(cascade = CascadeType.ALL)
+	public User user;
 
 	/** スタンプID **/
 	@Required
 	@NotNull
-	public Stamp stampId;
+	public Stamp stamp;
 
 	/** 作成日時 **/
 	@CreatedTimestamp

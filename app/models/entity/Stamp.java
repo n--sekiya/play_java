@@ -23,7 +23,7 @@ public class Stamp extends Model {
 
 	/** ID **/
 	@Id
-	public int id;
+	public Long id;
 
   /** ソート順 **/
 	@NotNull

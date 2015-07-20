@@ -23,9 +23,11 @@ public class Holiday extends Model {
 
 	/** ID **/
 	@Id
-	public int id;
+	public Long id;
 
 	/** 日付 **/
+	@Required
+	@NotNull
 	public Date date;
 
 	/** 名前 **/
@@ -33,10 +35,6 @@ public class Holiday extends Model {
 	@NotNull
 	@Size(max = 32)
 	public String name;
-
-	/** 論理削除フラグ **/
-	@NotNull
-	public boolean deleteFlg;
 
 	/** 作成日時 **/
 	@CreatedTimestamp
@@ -46,7 +44,7 @@ public class Holiday extends Model {
 	@UpdatedTimestamp
 	public Date updateAt;
 
-
+	/** IDから祝日情報を取得する */
 	public static Finder<Long, Holiday> find = new Finder<Long, Holiday>(Long.class, Holiday.class);
 
 }
