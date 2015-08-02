@@ -2,22 +2,43 @@
 @import play.i18n._
 @import helper._
 
-@main(Messages.get("common.title.calendar.master.holiday")) {
+@main(Messages.get("common.calendar.master.holidayList.title")) {
   @* ヘッダー *@
   @tag.header()
 
   @* メッセージ表示 *@
   @tag.message()
 
+  @* 追加ボタン *@
+<a href="/calendar/master/holiday/add">@Messages.get("common.calendar.button.add")</a><br>
+
+<table border="1">
+  <tr>
+    <th>ID</th>
+    <th>日付</th>
+    <th>名前</th>
+    <th></th>
+  </tr>
   @* 祝日一覧 *@
   @for(holiday <-holidayList) {
+  <td>
     @* ID *@
     @holiday.id
+  </td>
+  <td>
     @* 日付 *@
     @holiday.date
+  </td>
+  <td>
     @* 名前 *@
     @holiday.name
+  </td>
+  <td>
+    @* 削除 *@
+    <input type="button" value="@Messages.get("common.calendar.button.delete")">
+  </td>
   }
+</table>
 
   @* フッター *@
   @tag.footer()

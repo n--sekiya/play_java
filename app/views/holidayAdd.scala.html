@@ -1,0 +1,25 @@
+@(holidayForm:  Form[models.entity.Holiday])
+@import play.i18n._
+@import helper._
+
+@main(Messages.get("common.signup.title")) {
+  @* ヘッダー *@
+  @tag.header()
+  @form(action = routes.HolidayList.completion) {
+
+    @* 日付 *@
+    @inputDate(
+        field=holidayForm("date"),
+        '_label -> Messages.get("common.calendar.master.holidayList.date")
+    )
+    @* 名前 *@
+    @inputText(
+        field=holidayForm("name"),
+        '_label -> Messages.get("common.calendar.master.holidayList.name")
+    )
+    @* 送信ボタン *@
+    <input type="submit">
+  }
+  @* フッター *@
+  @tag.footer()
+}
