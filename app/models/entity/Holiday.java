@@ -14,6 +14,8 @@ import play.db.ebean.Model;
 import com.avaje.ebean.annotation.CreatedTimestamp;
 import com.avaje.ebean.annotation.UpdatedTimestamp;
 
+import play.i18n.Messages;
+
 /**
  * 祝日マスタテーブル
  */
@@ -26,14 +28,14 @@ public class Holiday extends Model {
 	public Long id;
 
 	/** 日付 **/
-	@Required
 	@NotNull
+	@Required(message = "common.calendar.validation.required")
 	public Date date;
 
 	/** 名前 **/
-	@Required
 	@NotNull
-	@Size(max = 32)
+	@Size(max = 32, message = "common.calendar.validation.length")
+	@Required(message = "common.calendar.validation.required")
 	public String name;
 
 	/** 作成日時 **/

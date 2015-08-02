@@ -7,29 +7,21 @@ GET     /                           controllers.Application.index()
 
 # ユーザ一覧
 GET     /calendar/master/user       controllers.UserList.index()
-
-# ユーザ追加
-#GET     /calendar/master/user/add
+GET     /calendar/master/user/add  controllers.UserList.add()
 
 # ユーザ編集
 #GET     /calendar/master/user/edit/:ユーザID
 
 # スタンプマスタ一覧
 GET     /calendar/master/stamp       controllers.StampList.index()
-
-# スタンプ追加
 #GET     /calendar/master/stamp/add
-
-# スタンプ編集
 #GET     /calendar/master/stamp/edit/:スタンプID
 
-# 祝日マスタ一覧
+# 祝日マスタ管理
 GET     /calendar/master/holiday       controllers.HolidayList.index()
-
-# 祝日登録
-
-
-# 祝日編集
+GET     /calendar/master/holiday/add       controllers.HolidayList.add()
+POST     /calendar/master/holiday/add       controllers.HolidayList.completion()
+POST     /calendar/master/holiday/delete       controllers.HolidayList.delete()
 
 
 # 月間カレンダー

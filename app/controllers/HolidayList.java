@@ -18,16 +18,48 @@ import views.html.*;
 public class HolidayList extends ControllerBase {
 
 	/**
-	 * 初期表示
+	 * 一覧表示
 	 * @return signup.scala.html
 	 */
 	public static Result index() {
-//		Logger.info("初期表示");
-//		Form<Holiday> stamp = new Form(Holiday.class);
-//		List<Holiday> list = Holiday.find.select("name").all();
 		List<Holiday> list = Holiday.find.all();
 		return ok(holidayList.render(list));
 	}
+
+	/**
+	 * 追加
+	 * @return signup.scala.html
+	 */
+	public static Result add() {
+		Form<Holiday> holiday = new Form(Holiday.class);
+		return ok(holidayAdd.render(holiday));
+	}
+
+	/**
+	 * 完了
+	 * @return signup.scala.html
+	 */
+	public static Result completion() {
+		Form<Holiday> holiday = new Form(Holiday.class).bindFromRequest();
+		if (holiday.hasErrors()) {
+			flash(ERROR, Messages.get("common.calendar.message.error"));
+			return badRequest(holidayAdd.render(holiday));
+		} else {
+			holiday.get().save();
+			flash(SUCCESS, Messages.get("common.calendar.message.success"));
+			return redirect("/calendar/master/holiday");
+		}
+	}
+
+	/**
+	 * 削除
+	 * @return signup.scala.html
+	 */
+	public static Result delete() {
+//		List<Holiday> list = Holiday.find.all();
+		return redirect("/calendar/master/holiday");
+	}
+
 
 
 }
